@@ -1,18 +1,16 @@
 package org.MyNet.optimizer;
 
 import java.util.Random;
-import MyNet.network.*;
-import MyNet.costFunction.*;
-import MyNet.matrix.*;
-import MyNet.layer.*;
-import MyNet.nodes.*;
+import org.MyNet.network.*;
+import org.MyNet.costFunction.*;
+import org.MyNet.matrix.*;
+import org.MyNet.layer.*;
+import org.MyNet.nodes.*;
 
 /**
  * Class for Stochastic Gradient Descent.
  */
 public class SGD extends Optimizer{
-    Random rand;
-
     /**
      * Constructor for this class.
      */

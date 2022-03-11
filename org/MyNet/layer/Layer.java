@@ -2,9 +2,9 @@ package org.MyNet.layer;
 
 import java.io.*;
 
-import MyNet.nodes.*;
-import MyNet.nodes.activationFunction.*;
-import MyNet.matrix.*;
+import org.MyNet.nodes.*;
+import org.MyNet.nodes.activationFunction.*;
+import org.MyNet.matrix.*;
 
 /**
  * Class for layer.

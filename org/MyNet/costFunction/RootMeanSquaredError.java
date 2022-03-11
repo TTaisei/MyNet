@@ -1,6 +1,6 @@
 package org.MyNet.costFunction;
 
-import MyNet.matrix.*;
+import org.MyNet.matrix.*;
 import java.lang.Math;
 
 /**

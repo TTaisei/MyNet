@@ -3,11 +3,11 @@ package org.MyNet.network;
 import java.io.*;
 import java.util.*;
 
-import MyNet.nodes.*;
-import MyNet.nodes.activationFunction.*;
-import MyNet.layer.*;
-import MyNet.matrix.*;
-import MyNet.version.*;
+import org.MyNet.nodes.*;
+import org.MyNet.nodes.activationFunction.*;
+import org.MyNet.layer.*;
+import org.MyNet.matrix.*;
+import org.MyNet.version.*;
 
 /**
  * Class for network.
@@ -80,7 +80,7 @@ public class Network implements Serializable {
      * Save this network to one file.
      * @param name Name of save file.
      */
-    public void save(String name) throws Exception {
+    public void save(String name){
         try (
             FileOutputStream fos = new FileOutputStream(name);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -97,8 +97,8 @@ public class Network implements Serializable {
      * Load a network from the file.
      * @param name Name of load file.
      */
-    public void load(String name) throws Exception{
-        try(
+    public void load(String name){
+        try (
             FileInputStream fis = new FileInputStream(name);
             ObjectInputStream ois = new ObjectInputStream(fis);
         ){
@@ -111,6 +111,9 @@ public class Network implements Serializable {
             this.loadParameters(loadNet);
         }catch (IOException e){
             System.out.println("IOException");
+            System.exit(-1);
+        }catch (ClassNotFoundException e){
+            System.out.println("ClassNotFoundException");
             System.exit(-1);
         }
     }
@@ -174,7 +177,7 @@ public class Network implements Serializable {
      * @param sc Scanner instance.
      * @return Readed String instance.
      */
-    private String nextLine(Scanner sc){
+    private String nextLine(Scanner sc) throws NoSuchElementException {
         String ans;
         try {
             ans = sc.nextLine();

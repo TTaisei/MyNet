@@ -2,11 +2,11 @@ package org.MyNet.optimizer;
 
 import java.util.ArrayList;
 import java.util.Random;
-import MyNet.network.*;
-import MyNet.costFunction.*;
-import MyNet.layer.*;
-import MyNet.matrix.*;
-import MyNet.nodes.*;
+import org.MyNet.network.*;
+import org.MyNet.costFunction.*;
+import org.MyNet.layer.*;
+import org.MyNet.matrix.*;
+import org.MyNet.nodes.*;
 
 /**
  * Parent class of optimizer.
@@ -140,7 +140,7 @@ public class Optimizer {
             for (int j = 0; j < backNum; j++){
                 y = this.forward(xs[j]);
                 this.back(xs[j], y, ts[j]);
-                System.out.printf("\rloss: %.4f", this.cFunc.calcurate(y, t).matrix[0][0]);
+                System.out.printf("\rloss: %.4f", this.cFunc.calcurate(y, ts[j]).matrix[0][0]);
             }
             System.out.println();
         }

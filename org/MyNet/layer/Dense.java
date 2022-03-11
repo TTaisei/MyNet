@@ -1,8 +1,8 @@
 package org.MyNet.layer;
 
-import MyNet.nodes.activationFunction.*;
-import MyNet.nodes.*;
-import MyNet.matrix.*;
+import org.MyNet.nodes.activationFunction.*;
+import org.MyNet.nodes.*;
+import org.MyNet.matrix.*;
 
 /**
  * Class for affine layer.

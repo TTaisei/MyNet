@@ -1,8 +1,8 @@
 package org.MyNet.optimizer;
 
-import MyNet.network.*;
-import MyNet.costFunction.*;
-import MyNet.matrix.*;
+import org.MyNet.network.*;
+import org.MyNet.costFunction.*;
+import org.MyNet.matrix.*;
 
 /**
  * Class for Gradient Descent.

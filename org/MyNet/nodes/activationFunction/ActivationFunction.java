@@ -2,7 +2,7 @@ package org.MyNet.nodes.activationFunction;
 
 import java.io.*;
 
-import MyNet.matrix.*;
+import org.MyNet.matrix.*;
 
 /**
  * Activation function's base class.
