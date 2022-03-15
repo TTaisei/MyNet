@@ -251,10 +251,9 @@ public class Matrix implements Serializable {
      * @param num Number.
      */
     public void div(double num){
-        Matrix rtn = new Matrix(new double[this.row][this.col]);
         for (int i = 0; i < this.row; i++){
             for (int j = 0; j < this.col; j++){
-                rtn.matrix[i][j] = this.matrix[i][j] / num;
+                this.matrix[i][j] = this.matrix[i][j] / num;
             }
         }
     }
