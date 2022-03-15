@@ -74,6 +74,25 @@ public class Matrix implements Serializable {
     }
 
     /**
+     * Constructor for this class.
+     * Set the matrix and its size.
+     * @param in Two dimensional matrix of type ArrayList<ArrayList<Double>>.
+     */
+    public Matrix(ArrayList<ArrayList<Double>> in){
+        this.matrix = new double[in.size()][in.get(0).size()];
+        this.shape = new int[2];
+        this.row = in.size();
+        this.col = in.get(0).size();
+        this.shape[0] = this.row; this.shape[1] = this.col;
+
+        for (int i = 0; i < this.row; i++){
+            for (int j = 0; j < this.col; j++){
+                this.matrix[i][j] = in.get(i).get(j);
+            }
+        }
+    }
+
+    /**
      * Add a matrix to a matrix.
      * @param a Augend matrix.
      * @param b Addend matrix.
