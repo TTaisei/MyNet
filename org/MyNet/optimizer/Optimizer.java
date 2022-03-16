@@ -2,6 +2,8 @@ package org.MyNet.optimizer;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.PrintWriter;
+import java.io.IOException;
 import org.MyNet.network.*;
 import org.MyNet.costFunction.*;
 import org.MyNet.layer.*;
@@ -183,6 +185,95 @@ public class Optimizer {
                 );
             }
             System.out.println();
+        }
+
+        return y;
+    }
+
+    /**
+     * Run learning and save log.
+     * @param x Input layer.
+     * @param t Answer.
+     * @param nEpoch Number of epoch.
+     * @param batchSize Size of batch.
+     * @param fileName Name of logging file.
+     * @return Output of this network.
+     */
+    public Matrix fit(Matrix x, Matrix t, int nEpoch, int batchSize, String fileName){
+        Matrix[][] xt = this.makeMiniBatch(x, t, batchSize, rand);
+        Matrix[] xs = xt[0];
+        Matrix[] ts = xt[1];
+        Matrix y = ts[0].clone();
+        int backNum = (int)(x.row / batchSize) + 1;
+        double loss = 0.;
+
+        try(
+            PrintWriter fp = new PrintWriter(fileName);
+        ){
+            fp.write("Epoch,loss\n");
+            for (int i = 0; i < nEpoch; i++){
+                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
+                for (int j = 0; j < backNum; j++){
+                    y = this.forward(xs[j]);
+                    this.back(xs[j], y, ts[j]);
+                    loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
+                    System.out.printf("\rloss: %.4f", loss);
+                }
+                System.out.println();
+                fp.printf("%d,%f\n", i+1, loss);
+            }
+        }catch (IOException e){
+            System.out.println("IO Exception");
+            System.exit(-1);
+        }
+
+        return y;
+    }
+
+    /**
+     * Run learning and save log.
+     * @param x Input layer.
+     * @param t Answer.
+     * @param nEpoch Number of epoch.
+     * @param batchSize Size of batch.
+     * @param valX Input layer for validation.
+     * @param valT Answer for validation.
+     * @param fileName Name of logging file.
+     * @return Output of this network.
+     */
+    public Matrix fit(Matrix x, Matrix t, int nEpoch, int batchSize,
+                      Matrix valX, Matrix valT, String fileName){
+        Matrix[][] xt = this.makeMiniBatch(x, t, batchSize, rand);
+        Matrix[] xs = xt[0];
+        Matrix[] ts = xt[1];
+        Matrix[][] valxt = this.makeMiniBatch(valX, valT, batchSize, rand);
+        Matrix[] valxs = valxt[0];
+        Matrix[] valts = valxt[1];
+        Matrix y = ts[0].clone();
+        Matrix valY;
+        int backNum = (int)(x.row / batchSize) + 1;
+        double loss = 0., valLoss = 0.;
+
+        try(
+            PrintWriter fp = new PrintWriter(fileName);
+        ){
+            fp.write("Epoch,loss,valLoss\n");
+            for (int i = 0; i < nEpoch; i++){
+                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
+                for (int j = 0; j < backNum; j++){
+                    valY = this.forward(valxs[j]);
+                    y = this.forward(xs[j]);
+                    this.back(xs[j], y, ts[j]);
+                    loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
+                    valLoss = this.cFunc.calcurate(valY, valts[j]).matrix[0][0];
+                    System.out.printf("\rloss: %.4f - valLoss: %.4f", loss, valLoss);
+                }
+                fp.printf("%d,%f,%f\n", i+1, loss, valLoss);
+                System.out.println();
+            }
+        }catch (IOException e){
+            System.out.println("IO Exception");
+            System.exit(-1);
         }
 
         return y;

@@ -1,5 +1,7 @@
 package org.MyNet.optimizer;
 
+import java.io.PrintWriter;
+import java.io.IOException;
 import org.MyNet.network.*;
 import org.MyNet.costFunction.*;
 import org.MyNet.matrix.*;
@@ -80,6 +82,75 @@ public class GradientDescent extends Optimizer{
                 this.cFunc.calcurate(y, t).matrix[0][0],
                 this.cFunc.calcurate(valY, valT).matrix[0][0]
             );
+        }
+
+        return y;
+    }
+
+    /**
+     * Run learning.
+     * @param x Input layer.
+     * @param t Answer.
+     * @param nEpoch Number of epoch.
+     * @param fileName Name of logging file.
+     * @return Output of this network.
+     */
+    public Matrix fit(Matrix x, Matrix t, int nEpoch, String fileName){
+        Matrix y = this.forward(x);
+        double loss = 0.;
+
+        try(
+            PrintWriter fp = new PrintWriter(fileName);
+        ){
+            fp.write("Epoch,loss\n");
+            for (int i = 0; i < nEpoch; i++){
+                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
+                this.back(x, y, t);
+                y = this.forward(x);
+                loss = this.cFunc.calcurate(y, t).matrix[0][0];
+                System.out.printf("loss: %.4f\n", loss);
+                fp.printf("%d,%f\n", i+1, loss);
+            }
+        }catch (IOException e){
+            System.out.println("IO Exception");
+            System.exit(-1);
+        }
+
+        return y;
+    }
+
+    /**
+     * Run learning.
+     * @param x Input layer.
+     * @param t Answer.
+     * @param nEpoch Number of epoch.
+     * @param valX Input layer for validation.
+     * @param valT Answer for validation.
+     * @param fileName Name of logging file.
+     * @return Output of this network.
+     */
+    public Matrix fit(Matrix x, Matrix t, int nEpoch, Matrix valX, Matrix valT, String fileName){
+        Matrix y = this.forward(x);
+        Matrix valY;
+        double loss = 0., valLoss = 0.;
+
+        try(
+            PrintWriter fp = new PrintWriter(fileName);
+        ){
+            fp.write("Epoch,loss,valLoss\n");
+            for (int i = 0; i < nEpoch; i++){
+                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
+                this.back(x, y, t);
+                valY = this.forward(valX);
+                y = this.forward(x);
+                loss = this.cFunc.calcurate(y, t).matrix[0][0];
+                valLoss = this.cFunc.calcurate(valY, valT).matrix[0][0];
+                System.out.printf("loss: %.4f - valLoss: %.4f\n", loss, valLoss);
+                fp.printf("%d,%f,%f\n", i+1, loss, valLoss);
+            }
+        }catch (IOException e){
+            System.out.println("IO Exception");
+            System.exit(-1);
         }
 
         return y;
