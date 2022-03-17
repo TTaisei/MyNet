@@ -104,11 +104,9 @@ public class GradientDescent extends Optimizer{
         ){
             fp.write("Epoch,loss\n");
             for (int i = 0; i < nEpoch; i++){
-                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
                 this.back(x, y, t);
                 y = this.forward(x);
                 loss = this.cFunc.calcurate(y, t).matrix[0][0];
-                System.out.printf("loss: %.4f\n", loss);
                 fp.printf("%d,%f\n", i+1, loss);
             }
         }catch (IOException e){
@@ -139,13 +137,11 @@ public class GradientDescent extends Optimizer{
         ){
             fp.write("Epoch,loss,valLoss\n");
             for (int i = 0; i < nEpoch; i++){
-                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
                 this.back(x, y, t);
                 valY = this.forward(valX);
                 y = this.forward(x);
                 loss = this.cFunc.calcurate(y, t).matrix[0][0];
                 valLoss = this.cFunc.calcurate(valY, valT).matrix[0][0];
-                System.out.printf("loss: %.4f - valLoss: %.4f\n", loss, valLoss);
                 fp.printf("%d,%f,%f\n", i+1, loss, valLoss);
             }
         }catch (IOException e){

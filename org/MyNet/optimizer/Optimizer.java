@@ -212,14 +212,11 @@ public class Optimizer {
         ){
             fp.write("Epoch,loss\n");
             for (int i = 0; i < nEpoch; i++){
-                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
                 for (int j = 0; j < backNum; j++){
                     y = this.forward(xs[j]);
                     this.back(xs[j], y, ts[j]);
                     loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
-                    System.out.printf("\rloss: %.4f", loss);
                 }
-                System.out.println();
                 fp.printf("%d,%f\n", i+1, loss);
             }
         }catch (IOException e){
@@ -259,17 +256,14 @@ public class Optimizer {
         ){
             fp.write("Epoch,loss,valLoss\n");
             for (int i = 0; i < nEpoch; i++){
-                System.out.printf("Epoch %d/%d\n", i+1, nEpoch);
                 for (int j = 0; j < backNum; j++){
                     valY = this.forward(valxs[j]);
                     y = this.forward(xs[j]);
                     this.back(xs[j], y, ts[j]);
                     loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
                     valLoss = this.cFunc.calcurate(valY, valts[j]).matrix[0][0];
-                    System.out.printf("\rloss: %.4f - valLoss: %.4f", loss, valLoss);
                 }
                 fp.printf("%d,%f,%f\n", i+1, loss, valLoss);
-                System.out.println();
             }
         }catch (IOException e){
             System.out.println("IO Exception");
