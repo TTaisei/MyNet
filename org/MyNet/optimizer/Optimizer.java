@@ -215,8 +215,8 @@ public class Optimizer {
                 for (int j = 0; j < backNum; j++){
                     y = this.forward(xs[j]);
                     this.back(xs[j], y, ts[j]);
-                    loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
                 }
+                loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
                 fp.printf("%d,%f\n", i+1, loss);
             }
         }catch (IOException e){
@@ -260,9 +260,9 @@ public class Optimizer {
                     valY = this.forward(valxs[j]);
                     y = this.forward(xs[j]);
                     this.back(xs[j], y, ts[j]);
-                    loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
-                    valLoss = this.cFunc.calcurate(valY, valts[j]).matrix[0][0];
                 }
+                loss = this.cFunc.calcurate(y, ts[j]).matrix[0][0];
+                valLoss = this.cFunc.calcurate(valY, valts[j]).matrix[0][0];
                 fp.printf("%d,%f,%f\n", i+1, loss, valLoss);
             }
         }catch (IOException e){
