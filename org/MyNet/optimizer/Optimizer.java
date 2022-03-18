@@ -243,11 +243,8 @@ public class Optimizer {
         Matrix[][] xt = this.makeMiniBatch(x, t, batchSize, rand);
         Matrix[] xs = xt[0];
         Matrix[] ts = xt[1];
-        Matrix[][] valxt = this.makeMiniBatch(valX, valT, batchSize, rand);
-        Matrix[] valxs = valxt[0];
-        Matrix[] valts = valxt[1];
         Matrix y = ts[0].clone();
-        Matrix valY = valts[0].clone();
+        Matrix valY;
         int backNum = (int)(x.row / batchSize) + 1;
         double loss = 0., valLoss = 0.;
 
@@ -257,12 +254,12 @@ public class Optimizer {
             fp.write("Epoch,loss,valLoss\n");
             for (int i = 0; i < nEpoch; i++){
                 for (int j = 0; j < backNum; j++){
-                    valY = this.forward(valxs[j]);
                     y = this.forward(xs[j]);
                     this.back(xs[j], y, ts[j]);
                 }
+                valY = this.forward(valX);
                 loss = this.cFunc.calcurate(y, ts[ts.length-1]).matrix[0][0];
-                valLoss = this.cFunc.calcurate(valY, valts[valts.length-1]).matrix[0][0];
+                valLoss = this.cFunc.calcurate(valY, valT).matrix[0][0];
                 fp.printf("%d,%f,%f\n", i+1, loss, valLoss);
             }
         }catch (IOException e){
