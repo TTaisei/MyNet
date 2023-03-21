@@ -1,7 +1,7 @@
-package org.MyNet.nodes.activationFunction;
+package org.myNet.nodes.activationFunction;
 
 import java.lang.Math;
-import org.MyNet.matrix.*;
+import org.myNet.matrix.*;
 
 /**
  * ReLu function.
@@ -40,7 +40,7 @@ public class ReLu extends ActivationFunction {
      */
     public Matrix differential(Matrix matrix){
         Matrix rtn = matrix.clone();
-        
+
         for (int i = 0; i < rtn.row; i++){
             for (int j = 0; j < rtn.col; j++){
                 if (rtn.matrix[i][j] < 0){

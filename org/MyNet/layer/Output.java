@@ -1,8 +1,8 @@
-package org.MyNet.layer;
+package org.myNet.layer;
 
-import org.MyNet.nodes.activationFunction.*;
-import org.MyNet.nodes.*;
-import org.MyNet.matrix.*;
+import org.myNet.nodes.activationFunction.*;
+import org.myNet.nodes.*;
+import org.myNet.matrix.*;
 
 /**
  * Class for output layer.
@@ -54,7 +54,7 @@ public class Output extends Layer{
     @Override
     public void back(){
         for (int i = 0; i < this.nodes_num; i++){
-            
+
         }
     }
 

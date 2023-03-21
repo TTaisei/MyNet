@@ -1,9 +1,9 @@
-package org.MyNet.nodes;
+package org.myNet.nodes;
 
 import java.io.*;
 
-import org.MyNet.matrix.*;
-import org.MyNet.nodes.activationFunction.*;
+import org.myNet.matrix.*;
+import org.myNet.nodes.activationFunction.*;
 
 /**
  * One node class.

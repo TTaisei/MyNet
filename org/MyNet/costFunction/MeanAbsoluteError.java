@@ -1,6 +1,6 @@
-package org.MyNet.costFunction;
+package org.myNet.costFunction;
 
-import org.MyNet.matrix.*;
+import org.myNet.matrix.*;
 
 /**
  * Cost function's base class.
@@ -17,7 +17,7 @@ public class MeanAbsoluteError extends CostFunction {
 
     /**
      * Calcurate this cost function.
-     * @param y Matrix of network's output. 
+     * @param y Matrix of network's output.
      * @param t Matrix of actual data.
      * @return MSE between y and t.
      */
@@ -28,7 +28,7 @@ public class MeanAbsoluteError extends CostFunction {
 
     /**
      * Calcurate this cost function's differential.
-     * @param y Matrix of network's output. 
+     * @param y Matrix of network's output.
      * @param t Matrix of actual data.
      * @return The result of differentiating the MAE between y and t.
      */

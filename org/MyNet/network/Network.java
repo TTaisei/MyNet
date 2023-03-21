@@ -1,13 +1,13 @@
-package org.MyNet.network;
+package org.myNet.network;
 
 import java.io.*;
 import java.util.*;
 
-import org.MyNet.nodes.*;
-import org.MyNet.nodes.activationFunction.*;
-import org.MyNet.layer.*;
-import org.MyNet.matrix.*;
-import org.MyNet.version.*;
+import org.myNet.nodes.*;
+import org.myNet.nodes.activationFunction.*;
+import org.myNet.layer.*;
+import org.myNet.matrix.*;
+import org.myNet.version.*;
 
 /**
  * Class for network.

@@ -1,4 +1,4 @@
-package org.MyNet.nodes.activationFunction;
+package org.myNet.nodes.activationFunction;
 
 /**
  * enum class for designating activation function.

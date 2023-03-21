@@ -1,4 +1,4 @@
-package org.MyNet.matrix;
+package org.myNet.matrix;
 
 import java.io.*;
 import java.lang.Math;
@@ -371,7 +371,7 @@ public class Matrix implements Serializable {
     }
 
     /**
-     * Append a number to the side of this matrix. 
+     * Append a number to the side of this matrix.
      * @param matrix Matrix to be appended.
      * @param num number to append.
      * @return A Matrix instance appended number.
@@ -932,7 +932,7 @@ public class Matrix implements Serializable {
     @Override
     public Matrix clone(){
         Matrix rtn = new Matrix(new double[this.row][this.col]);
-        
+
         for (int i = 0; i < this.row; i++){
             for (int j = 0; j < this.col; j++){
                 rtn.matrix[i][j] = this.matrix[i][j];

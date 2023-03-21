@@ -1,10 +1,10 @@
-package org.MyNet.optimizer;
+package org.myNet.optimizer;
 
 import java.io.PrintWriter;
 import java.io.IOException;
-import org.MyNet.network.*;
-import org.MyNet.costFunction.*;
-import org.MyNet.matrix.*;
+import org.myNet.network.*;
+import org.myNet.costFunction.*;
+import org.myNet.matrix.*;
 
 /**
  * Class for Gradient Descent.

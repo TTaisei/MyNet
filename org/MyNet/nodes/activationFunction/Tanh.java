@@ -1,7 +1,7 @@
-package org.MyNet.nodes.activationFunction;
+package org.myNet.nodes.activationFunction;
 
 import java.lang.Math;
-import org.MyNet.matrix.*;
+import org.myNet.matrix.*;
 
 /**
  * Tanh function.

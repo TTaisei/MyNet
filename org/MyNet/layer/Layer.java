@@ -1,10 +1,10 @@
-package org.MyNet.layer;
+package org.myNet.layer;
 
 import java.io.*;
 
-import org.MyNet.nodes.*;
-import org.MyNet.nodes.activationFunction.*;
-import org.MyNet.matrix.*;
+import org.myNet.nodes.*;
+import org.myNet.nodes.activationFunction.*;
+import org.myNet.matrix.*;
 
 /**
  * Class for layer.
@@ -36,7 +36,7 @@ public class Layer implements Serializable{
         this.nodes_num = nodes_num;
         this.nodes = new Node[this.nodes_num];
         this.AF = type;
-        
+
         for (int i = 0; i < this.nodes_num; i++){
             nodes[i] = new Node(input_num, type);
         }

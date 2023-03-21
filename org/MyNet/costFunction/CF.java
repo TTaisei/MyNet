@@ -1,4 +1,4 @@
-package org.MyNet.costFunction;
+package org.myNet.costFunction;
 
 /**
  * Enum class for designating cost function.

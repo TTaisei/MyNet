@@ -1,14 +1,14 @@
-package org.MyNet.optimizer;
+package org.myNet.optimizer;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.io.PrintWriter;
 import java.io.IOException;
-import org.MyNet.network.*;
-import org.MyNet.costFunction.*;
-import org.MyNet.layer.*;
-import org.MyNet.matrix.*;
-import org.MyNet.nodes.*;
+import org.myNet.network.*;
+import org.myNet.costFunction.*;
+import org.myNet.layer.*;
+import org.myNet.matrix.*;
+import org.myNet.nodes.*;
 
 /**
  * Parent class of optimizer.

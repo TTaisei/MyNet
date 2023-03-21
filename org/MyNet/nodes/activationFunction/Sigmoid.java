@@ -1,7 +1,7 @@
-package org.MyNet.nodes.activationFunction;
+package org.myNet.nodes.activationFunction;
 
 import java.lang.Math;
-import org.MyNet.matrix.*;
+import org.myNet.matrix.*;
 
 /**
  * Sigmoid function.
@@ -40,7 +40,7 @@ public class Sigmoid extends ActivationFunction {
      */
     public Matrix differential(Matrix matrix){
         Matrix rtn = matrix.clone();
-        
+
         for (int i = 0; i < rtn.row; i++){
             for (int j = 0; j < rtn.col; j++){
                 rtn.matrix[i][j] = (1 - 1/(1+Math.exp(-matrix.matrix[i][j])))

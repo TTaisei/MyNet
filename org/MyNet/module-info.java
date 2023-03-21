@@ -1,4 +1,4 @@
-module MyNet {
+module myNet {
     exports costFunction;
     exports layer;
     exports matrix;

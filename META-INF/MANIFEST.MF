@@ -1,1 +1,1 @@
-Automatic-Module-Name: MyNet
+Automatic-Module-Name: myNet

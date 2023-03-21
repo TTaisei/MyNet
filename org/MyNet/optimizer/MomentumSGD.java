@@ -1,12 +1,12 @@
-package org.MyNet.optimizer;
+package org.myNet.optimizer;
 
 import java.util.Random;
 import java.util.ArrayList;
-import org.MyNet.network.*;
-import org.MyNet.costFunction.*;
-import org.MyNet.matrix.*;
-import org.MyNet.layer.*;
-import org.MyNet.nodes.*;
+import org.myNet.network.*;
+import org.myNet.costFunction.*;
+import org.myNet.matrix.*;
+import org.myNet.layer.*;
+import org.myNet.nodes.*;
 
 /**
  * Class for Stochastic Gradient Descent.

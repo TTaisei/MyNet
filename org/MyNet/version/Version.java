@@ -1,4 +1,4 @@
-package org.MyNet.version;
+package org.myNet.version;
 
 /** Class for information of version. */
 public class Version {
