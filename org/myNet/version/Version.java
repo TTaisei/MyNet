@@ -3,5 +3,5 @@ package org.myNet.version;
 /** Class for information of version. */
 public class Version {
     /** Information of version. */
-    public static final String version = "1.2.4";
+    public static final String version = "2.0.0";
 }
